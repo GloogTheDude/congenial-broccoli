@@ -1,8 +1,12 @@
-[gd_scene load_steps=221 format=3 uid="uid://bk3xfwswlcqlr"]
+[gd_scene load_steps=226 format=3 uid="uid://bk3xfwswlcqlr"]
 
+[ext_resource type="Script" uid="uid://8qep0vrgagl6" path="res://Scenes/Player/player.gd" id="1_dd0ac"]
 [ext_resource type="Texture2D" uid="uid://cb2v8kn2wsyc7" path="res://Assets/Top-Down Asset Pack (Jul 2025)/idle/Sprite Sheet/idle full sprite sheet (transparent BG).png" id="1_uvnfx"]
 [ext_resource type="Texture2D" uid="uid://c5gjfxewhcefe" path="res://Assets/Top-Down Asset Pack (Jul 2025)/walk/Sprite Sheet/walk complete sprite sheet (transparent BG).png" id="2_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://dey284ktthyi7" path="res://Assets/Top-Down Asset Pack (Jul 2025)/attack/Sprite Sheet/attack full sprite sheet (transparent BG).png" id="3_xpcdj"]
+[ext_resource type="Script" uid="uid://ma41b2b3posf" path="res://Scripts/State Machine/node_state_machine.gd" id="4_htcer"]
+[ext_resource type="Script" uid="uid://q5ebkch7bvld" path="res://Scenes/Player/idle_state.gd" id="5_dd0ac"]
+[ext_resource type="Script" uid="uid://e3223pkci66v" path="res://Scenes/Player/walk_state.gd" id="7_0u5uq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_km4gb"]
 atlas = ExtResource("3_xpcdj")
@@ -1639,9 +1643,32 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Player" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htcer"]
+size = Vector2(8, 16)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_dd0ac")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 0.00620022
 sprite_frames = SubResource("SpriteFrames_7g0yx")
-animation = &"NW_attack"
+animation = &"S_idle"
+autoplay = "S_idle"
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("4_htcer")
+initial_node_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animated_sprite_2D")]
+script = ExtResource("5_dd0ac")
+player = NodePath("../..")
+animated_sprite_2D = NodePath("../../AnimatedSprite2D")
+
+[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animated_sprite_2D")]
+script = ExtResource("7_0u5uq")
+player = NodePath("../..")
+animated_sprite_2D = NodePath("../../AnimatedSprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_htcer")

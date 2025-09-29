@@ -14,6 +14,15 @@ config/name="Project Dialike"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[file_customization]
+
+folder_colors={
+"res://Assets/": "green",
+"res://Resources/": "pink",
+"res://Scenes/": "purple",
+"res://Scripts/": "yellow"
+}
+
 [input]
 
 Action_Button={
