@@ -7,6 +7,7 @@ var node_states : Dictionary = {}
 var current_node_state : NodeState
 var current_node_state_name : String
 
+
 func _ready() -> void:
 	for child in get_children():
 		if child is NodeState:

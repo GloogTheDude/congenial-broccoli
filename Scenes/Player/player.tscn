@@ -1643,8 +1643,8 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_htcer"]
-size = Vector2(8, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_0u5uq"]
+radius = 5.09902
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_dd0ac")
@@ -1669,6 +1669,6 @@ script = ExtResource("7_0u5uq")
 player = NodePath("../..")
 animated_sprite_2D = NodePath("../../AnimatedSprite2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
-shape = SubResource("RectangleShape2D_htcer")
+[node name="Shadow" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+shape = SubResource("CircleShape2D_0u5uq")
