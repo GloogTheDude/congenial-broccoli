@@ -6,5 +6,7 @@ enum  type_interactable{
 	pickable,
 	auto_pickable,
 	monster,
-	NPC
+	NPC,
+	breakable, 
+	openable 
 }

@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://day3hs4rbmscn"]
+[gd_scene load_steps=7 format=4 uid="uid://day3hs4rbmscn"]
 
 [ext_resource type="Texture2D" uid="uid://pfrhybdosjxy" path="res://Assets/Tileset/test tileset/iso_tileset.png" id="1_5xgei"]
 [ext_resource type="PackedScene" uid="uid://bk3xfwswlcqlr" path="res://Scenes/Player/player.tscn" id="2_m3v58"]
-[ext_resource type="Texture2D" uid="uid://b03ilqhpmhycy" path="res://icon.svg" id="3_qvs5a"]
 [ext_resource type="PackedScene" uid="uid://c5inrjmlsf06w" path="res://Scenes/MouseManagementSystem/mouse_management_system.tscn" id="4_f2x0r"]
+[ext_resource type="PackedScene" uid="uid://cq5vqnlao7456" path="res://Scenes/Interactable/props/barrel/barrel.tscn" id="4_qvs5a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xx07s"]
 texture = ExtResource("1_5xgei")
@@ -30,9 +30,6 @@ terrain_set_0/terrain_0/name = "Grass"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_xx07s")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3yfs"]
-size = Vector2(128, 124)
-
 [node name="TestscenePlayer" type="Node2D"]
 
 [node name="Grass" type="TileMapLayer" parent="."]
@@ -45,14 +42,13 @@ position = Vector2(2, -4)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(225, 28)
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("3_qvs5a")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("RectangleShape2D_u3yfs")
-debug_color = Color(0.840581, 0, 0.100819, 0.42)
-
 [node name="MouseManagementSystem" parent="." instance=ExtResource("4_f2x0r")]
+
+[node name="Barrel" parent="." instance=ExtResource("4_qvs5a")]
+position = Vector2(78, -21)
+
+[node name="Barrel2" parent="." instance=ExtResource("4_qvs5a")]
+position = Vector2(-53, 23)
+
+[node name="Barrel3" parent="." instance=ExtResource("4_qvs5a")]
+position = Vector2(60, 31)

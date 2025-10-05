@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://cq5vqnlao7456"]
+
+[ext_resource type="Script" uid="uid://dvwj03gb4kbp4" path="res://Scenes/Interactable/props/barrel/barrel.gd" id="1_2rt0x"]
+[ext_resource type="Texture2D" uid="uid://cffowu102x78b" path="res://Assets/props/barrel/E/barrel_E_0.0_0.png" id="1_ncrxd"]
+[ext_resource type="PackedScene" uid="uid://logqahkvkm04" path="res://Scenes/Component/interactable_component/InteractableComponent.tscn" id="2_2rt0x"]
+[ext_resource type="Script" uid="uid://c60ly4cw4rotu" path="res://Resources/interractable/InteractableData.gd" id="3_ncrxd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jel03"]
+atlas = ExtResource("1_ncrxd")
+region = Rect2(0, 0, 252, 252)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qrqut"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jel03")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ti24j"]
+radius = 7.0
+
+[sub_resource type="Resource" id="Resource_2rt0x"]
+resource_local_to_scene = true
+script = ExtResource("3_ncrxd")
+interactable_name = "Barrel"
+type = 5
+interraction_radius = 0.0
+interaction_point = Vector2(0, 0)
+_is_permanent = true
+metadata/_custom_type_script = "uid://c60ly4cw4rotu"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnrcd"]
+size = Vector2(14, 20)
+
+[node name="Barrel" type="StaticBody2D"]
+light_mask = 2
+visibility_layer = 2
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_2rt0x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qrqut")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(2, -1)
+shape = SubResource("CircleShape2D_ti24j")
+
+[node name="InteractableComponent" parent="." instance=ExtResource("2_2rt0x")]
+interactable_data = SubResource("Resource_2rt0x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
+position = Vector2(2, -4)
+shape = SubResource("RectangleShape2D_vnrcd")
+debug_color = Color(0.766891, 0.120653, 0.451211, 0.42)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -17.0
+offset_top = -37.0
+offset_right = 23.0
+offset_bottom = -14.0

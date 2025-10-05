@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://logqahkvkm04"]
+
+[ext_resource type="Script" uid="uid://c207ueau7d7jj" path="res://Scenes/Component/interactable_component/interactable_component.gd" id="1_jufx7"]
+[ext_resource type="Resource" uid="uid://dpcmipd0wnn1j" path="res://Resources/interractable/default.tres" id="2_d720p"]
+
+[node name="InteractableComponent" type="Area2D" groups=["interactable"]]
+script = ExtResource("1_jufx7")
+interactable_data = ExtResource("2_d720p")

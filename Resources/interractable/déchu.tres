@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InteractableData" load_steps=2 format=3 uid="uid://blhow7t5kp8m7"]
+
+[ext_resource type="Script" uid="uid://c60ly4cw4rotu" path="res://Resources/interractable/InteractableData.gd" id="1_dwsi2"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_dwsi2")
+interactable_name = "Déchu2"
+type = 3
+interraction_radius = 0.0
+interaction_point = Vector2(0, 0)
+_is_permanent = false
+metadata/_custom_type_script = "uid://c60ly4cw4rotu"

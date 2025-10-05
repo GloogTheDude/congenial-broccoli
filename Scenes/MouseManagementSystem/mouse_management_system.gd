@@ -47,14 +47,27 @@ func _process(delta: float) -> void:
 	
 	# --- Callbacks simples (remplace par ta logique/émission de signaux) ---
 func _on_hover_enter(target: Object) -> void:
-	print("_on_hover_enter")
-	# ex: highlight, curseur contextuel, label...
-	pass
+	
+	if target.is_in_group("interactable"):
+		print("_on_hover_enter grp interactable")
+		print('interractable found')
+		var data:InteractableData = target.interactable_data
+		print("target: ",data.interactable_name)
+		print("type = ", DataType.type_interactable.find_key(data.type))
+		print("target id: ",data.id)
+		target.emit_signal("enter_hovered")
 
 func _on_hover_exit(target: Object) -> void:
 	# ex: retirer highlight
-	print("_on_hover_exit")
-	pass
+	
+	if target.is_in_group("interactable"):
+		print("_on_hover_exit grp interactable")
+		print('interractable found')
+		var data:InteractableData = target.interactable_data
+		print("target: ",data.interactable_name)
+		print("type = ", DataType.type_interactable.find_key(data.type))
+		print("target id: ",data.id)
+		target.emit_signal("exit_hovered")
 
 func _on_selected(target: Object) -> void:
 	# ex: émettre un signal "selected(target, position/anchor, radius)"
