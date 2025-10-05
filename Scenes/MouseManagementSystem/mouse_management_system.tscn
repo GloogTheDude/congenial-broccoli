@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5inrjmlsf06w"]
+
+[ext_resource type="Script" uid="uid://bsxffs0bnjes0" path="res://Scenes/MouseManagementSystem/mouse_management_system.gd" id="1_0c68n"]
+
+[node name="MouseManagementSystem" type="Node2D"]
+script = ExtResource("1_0c68n")
