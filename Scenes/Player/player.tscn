@@ -1,4 +1,4 @@
-[gd_scene load_steps=226 format=3 uid="uid://bk3xfwswlcqlr"]
+[gd_scene load_steps=227 format=3 uid="uid://bk3xfwswlcqlr"]
 
 [ext_resource type="Script" uid="uid://8qep0vrgagl6" path="res://Scenes/Player/player.gd" id="1_dd0ac"]
 [ext_resource type="Texture2D" uid="uid://cb2v8kn2wsyc7" path="res://Assets/Top-Down Asset Pack (Jul 2025)/idle/Sprite Sheet/idle full sprite sheet (transparent BG).png" id="1_uvnfx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://ma41b2b3posf" path="res://Scripts/State Machine/node_state_machine.gd" id="4_htcer"]
 [ext_resource type="Script" uid="uid://q5ebkch7bvld" path="res://Scenes/Player/idle_state.gd" id="5_dd0ac"]
 [ext_resource type="Script" uid="uid://e3223pkci66v" path="res://Scenes/Player/walk_state.gd" id="7_0u5uq"]
+[ext_resource type="Script" uid="uid://8a6ma2m7n3l0" path="res://Scenes/Player/attack.gd" id="8_jlvik"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_km4gb"]
 atlas = ExtResource("3_xpcdj")
@@ -896,9 +897,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cndt5")
 }],
-"loop": true,
+"loop": false,
 "name": &"E_attack",
-"speed": 7.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -992,9 +993,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_iae8j")
 }],
-"loop": true,
+"loop": false,
 "name": &"NE_attack",
-"speed": 7.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1088,9 +1089,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cqneq")
 }],
-"loop": true,
+"loop": false,
 "name": &"NW_attack",
-"speed": 7.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1184,9 +1185,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q00iq")
 }],
-"loop": true,
+"loop": false,
 "name": &"N_attack",
-"speed": 7.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1280,9 +1281,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rssbw")
 }],
-"loop": true,
+"loop": false,
 "name": &"SE_attack",
-"speed": 5.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1376,9 +1377,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n48cf")
 }],
-"loop": true,
+"loop": false,
 "name": &"SW_attack",
-"speed": 7.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1472,9 +1473,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_abhcb")
 }],
-"loop": true,
+"loop": false,
 "name": &"S_attack",
-"speed": 5.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1568,9 +1569,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4pn4g")
 }],
-"loop": true,
+"loop": false,
 "name": &"W_attack",
-"speed": 7.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1652,7 +1653,7 @@ script = ExtResource("1_dd0ac")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 0.00620022
 sprite_frames = SubResource("SpriteFrames_7g0yx")
-animation = &"S_idle"
+animation = &"E_attack"
 autoplay = "S_idle"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
@@ -1666,6 +1667,11 @@ animated_sprite_2D = NodePath("../../AnimatedSprite2D")
 
 [node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animated_sprite_2D")]
 script = ExtResource("7_0u5uq")
+player = NodePath("../..")
+animated_sprite_2D = NodePath("../../AnimatedSprite2D")
+
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animated_sprite_2D")]
+script = ExtResource("8_jlvik")
 player = NodePath("../..")
 animated_sprite_2D = NodePath("../../AnimatedSprite2D")
 

@@ -1,6 +1,6 @@
 extends NodeState
 
-@export var player:CharacterBody2D
+@export var player:Player
 @export var animated_sprite_2D: AnimatedSprite2D
 
 func _on_process(_delta : float) -> void:
@@ -9,17 +9,17 @@ func _on_process(_delta : float) -> void:
 
 
 func _on_physics_process(_delta : float) -> void: 
-	GameInputEvent.define_player_orientation(player)
+	player.define_player_orientation()
 	animated()
 
 func animated()->void:
-	var name_animation =  player.orientation +"_idle"
+	var name_animation =  player.get_orientation() +"_idle"
 	#print(name_animation)
 	animated_sprite_2D.play(name_animation)
 
 func _on_next_transitions() -> void:
-	GameInputEvent.define_player_orientation(player)
-	if GameInputEvent.is_input(player):
+	player.define_player_orientation()
+	if !player.has_reached_destination():
 		#print("trying to walk")
 		transition.emit("Walk")
 

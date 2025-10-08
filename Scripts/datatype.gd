@@ -10,3 +10,14 @@ enum  type_interactable{
 	breakable, 
 	openable 
 }
+
+enum orientation{
+	N,
+	NE,
+	E,
+	SE,
+	S,
+	SW,
+	W,
+	NW
+}
